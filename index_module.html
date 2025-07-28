@@ -18,11 +18,22 @@
     h1 {
       font-family: sans-serif;
       font-size: 1.5rem;
+      line-height: 100%;
     }
 
     h2 {
       font-family: sans-serif;
       font-size: 1.2rem;
+      line-height: 100%;
+    }
+
+    h2 a {
+      display: inline-block;
+      font-size: 1rem;
+      padding: 0.1rem 0.25rem;
+      border-radius: 0.25rem;
+      background-color: #f0f0f0;
+      border: 1px solid #ddd;
     }
   </style>
 </head>
@@ -32,11 +43,13 @@
     <h1>Echo: Circuit Viusalization</h1>
     <hr />
     <div id="vis-wrap-00001">
-      <h2>Original</h2>
+      <h2>Original <a id="download-circuit-0-png">Download PNG</a> <a id="download-circuit-0-svg">Download SVG</a></h2>
       <div id="circuit-0"></div>
-      <h2>Transpiled 1</h2>
+      <h2>Transpiled 1 <a id="download-circuit-1-png">Download PNG</a> <a id="download-circuit-1-svg">Download SVG</a>
+      </h2>
       <div id="circuit-1"></div>
-      <h2>Transpiled 2</h2>
+      <h2>Transpiled 2 <a id="download-circuit-2-png">Download PNG</a> <a id="download-circuit-2-svg">Download SVG</a>
+      </h2>
       <div id="circuit-2"></div>
     </div>
   </div>

@@ -1,6 +1,6 @@
 {
   "name": "echo-circuit",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "type": "module",
   "main": "dist/echo-circuit.umd.js",
   "module": "dist/echo-circuit.es.js",

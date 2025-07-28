@@ -1,5 +1,5 @@
 // @ts-nocheck
-import { clearTooltip, makeTooltip, moveTooltip, prepareData } from "../src";
+import { clearTooltip, getSVGimageLink, makeTooltip, moveTooltip, prepareData } from "../src";
 import { runEcho } from "../src";
 
 let selector0 = '#circuit-0',
@@ -10,21 +10,22 @@ let circuitSelectorName = {
   [selector1]: 'Transpiled-1',
   [selector2]: 'Transpiled-2'
 }
+const unitId = 'vis-wrap-00001'
 
 let interaction = {
   onMouseOver: (event, role, content, clicked) => {
     if (role === 'gate-group-click-wrap') {
-      makeTooltip(event, content, 'vis-wrap-00001');
+      makeTooltip(event, content, unitId);
     }
   },
   onMouseMove: (event, role) => {
     if (role === 'gate-group-click-wrap') {
-      moveTooltip(event, 'vis-wrap-00001');
+      moveTooltip(event, unitId);
     }
   },
   onMouseOut: (event, role) => {
     if (role == 'gate-group-click-wrap') {
-      clearTooltip('vis-wrap-00001');
+      clearTooltip(unitId);
     }
   },
 }
@@ -244,7 +245,7 @@ let spec0 = {
   }],
   options: {
     isOriginal: true,
-    unitId: 'vis-wrap-00001',
+    unitId,
     circuitSelectorName
   },
   interaction
@@ -285,7 +286,7 @@ let spec1 = {
   }],
   options: {
     isOriginal: false,
-    unitId: 'vis-wrap-00001',
+    unitId,
     circuitSelectorName
   },
   interaction
@@ -330,7 +331,7 @@ let spec2 = {
   }],
   options: {
     isOriginal: false,
-    unitId: 'vis-wrap-00001',
+    unitId,
     circuitSelectorName
   },
   interaction
@@ -353,6 +354,16 @@ function draw() {
   let outcome0 = runEcho(prep0, circuit_set);
   let outcome1 = runEcho(prep1, circuit_set);
   let outcome2 = runEcho(prep2, circuit_set);
+
+  // add download buttons
+  [selector0, selector1, selector2].forEach(selector => {
+    getSVGimageLink(selector, unitId).then((loader) => {
+      let png_button = document.querySelector(`#download-${selector.replace("#", "")}-png`);
+      let svg_button = document.querySelector(`#download-${selector.replace("#", "")}-svg`);
+      png_button.href = loader?.png;
+      svg_button.href = loader?.svg;
+    });
+  })
 }
 
 draw();

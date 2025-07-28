@@ -132,9 +132,3 @@ export type SvgPath = SvgIRC & {
   type: "path",
   path: string
 } & StrokeAttrs & FillAttrs;
-
-
-export type SvgGradientStop = {
-  offset: `${number}%`,
-  "stop-color": string
-};

@@ -4,10 +4,11 @@ import { defineConfig } from 'vite';
 import dts from 'vite-plugin-dts'; // For generating type definitions
 
 export default defineConfig({
+  publicDir: false,
   build: {
     lib: {
-      entry: resolve(__dirname, 'src/main.ts'), // Your library's entry point
-      name: 'echo', // Global variable name if using UMD/IIFE
+      entry: resolve(__dirname, 'src/main.ts'), // end point
+      name: 'echo', // global variable name
       fileName: (format) => `echo-circuit.${format}.js`,
     },
   },

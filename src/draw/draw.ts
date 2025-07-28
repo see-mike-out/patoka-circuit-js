@@ -4,6 +4,8 @@ import { svgNamespace } from "./constants";
 import { draw_svg_elem } from "./drawSvgElem";
 // @ts-ignore
 import classes from '../style.module.css';
+// @ts-ignore
+import classes_raw from '../style.module.css?inline';
 
 export function runEcho(
   spec: PreparedData,
@@ -26,6 +28,14 @@ export function runEcho(
     svg.setAttribute("width", draw_plan.width.toString());
     svg.setAttribute("height", draw_plan.height.toString());
     svg.setAttribute("viewBox", draw_plan.viewBox.join(" "));
+
+    // add css
+    let defs = document.createElementNS(svgNamespace, "defs");
+    let style = document.createElementNS(svgNamespace, "style");
+    style.setAttribute("type", "text/css");
+    style.innerHTML = classes_raw;
+    defs.appendChild(style);
+    svg.appendChild(defs);
 
     for (let group_key in draw_plan.groups) {
       const group = draw_plan.groups[group_key];

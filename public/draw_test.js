@@ -11,21 +11,22 @@ let circuitSelectorName = {
   [selector1]: 'Transpiled-1',
   [selector2]: 'Transpiled-2'
 }
+const unitId = 'vis-wrap-00001';
 
 let interaction = {
   onMouseOver: (event, role, content, clicked) => {
     if (role === 'gate-group-click-wrap') {
-      echo.makeTooltip(event, content, 'vis-wrap-00001');
+      echo.makeTooltip(event, content, unitId);
     }
   },
   onMouseMove: (event, role) => {
     if (role === 'gate-group-click-wrap') {
-      echo.moveTooltip(event, 'vis-wrap-00001');
+      echo.moveTooltip(event, unitId);
     }
   },
   onMouseOut: (event, role) => {
     if (role == 'gate-group-click-wrap') {
-      echo.clearTooltip('vis-wrap-00001');
+      echo.clearTooltip(unitId);
     }
   },
 }
@@ -245,7 +246,7 @@ let spec0 = {
   }],
   options: {
     isOriginal: true,
-    unitId: 'vis-wrap-00001',
+    unitId,
     circuitSelectorName
   },
   interaction
@@ -286,7 +287,7 @@ let spec1 = {
   }],
   options: {
     isOriginal: false,
-    unitId: 'vis-wrap-00001',
+    unitId,
     circuitSelectorName
   },
   interaction
@@ -331,7 +332,7 @@ let spec2 = {
   }],
   options: {
     isOriginal: false,
-    unitId: 'vis-wrap-00001',
+    unitId,
     circuitSelectorName
   },
   interaction
@@ -354,6 +355,20 @@ function draw() {
   let outcome0 = echo.runEcho(prep0, circuit_set);
   let outcome1 = echo.runEcho(prep1, circuit_set);
   let outcome2 = echo.runEcho(prep2, circuit_set);
+
+  // add download buttons
+  [selector0, selector1, selector2].forEach(selector => {
+    let loader = echo.getSVGimageLink(selector, unitId)
+    // .then((loader) => {
+    //   console.log(loader)
+    //   let png_button = document.querySelector(`#download-${selector.replace("#", "")}-png`);
+    //   let svg_button = document.querySelector(`#download-${selector.replace("#", "")}-svg`);
+    //   console.log(png_button, svg_button)
+    //   png_button.href = loader?.png;
+    //   svg_button.href = loader?.svg;
+    // });
+    console.log("..", loader)
+  })
 }
 
 draw();
