@@ -25,25 +25,30 @@ jobs:
       - name: Build
         run: npm run build 
 
+      - name: List files in dist directory
+        run: ls -l dist/
+      - name: List files in current directory
+        run: ls -l .
+        
       - name: Create release 0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Automatically provided GitHub token
           TAG: ${{ github.ref_name }} # The name of the pushed tag
         run: |
-          gh release upload "$TAG" echo-circuit.es.js
+          gh release upload "$TAG" dist/echo-circuit.es.js
 
       - name: Create release 1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Automatically provided GitHub token
           TAG: ${{ github.ref_name }} # The name of the pushed tag
         run: |
-          gh release upload "$TAG" echo-circuit.umd.js
+          gh release upload "$TAG" dist/echo-circuit.umd.js
 
       - name: Create release 2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Automatically provided GitHub token
           TAG: ${{ github.ref_name }} # The name of the pushed tag
         run: |
-          gh release upload "$TAG" echo-circuit.css
+          gh release upload "$TAG" dist/echo-circuit.css
           
           
