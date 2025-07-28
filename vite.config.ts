@@ -8,7 +8,7 @@ export default defineConfig({
     lib: {
       entry: resolve(__dirname, 'src/main.ts'), // Your library's entry point
       name: 'echo', // Global variable name if using UMD/IIFE
-      fileName: (format) => `echo.${format}.js`,
+      fileName: (format) => `echo-circuit.${format}.js`,
     },
   },
   test: {

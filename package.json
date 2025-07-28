@@ -1,9 +1,9 @@
 {
-  "name": "echo",
+  "name": "echo-circuit",
   "version": "0.0.1",
   "type": "module",
-  "main": "dist/echo.umd.js",
-  "module": "dist/echo.es.js",
+  "main": "dist/echo-circuit.umd.js",
+  "module": "dist/echo-circuit.es.js",
   "types": "dist/src/main.d.ts",
   "files": [
     "dist"
