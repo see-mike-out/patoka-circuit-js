@@ -1,0 +1,27 @@
+{
+  "name": "echo",
+  "private": true,
+  "version": "0.0.1",
+  "type": "module",
+  "main": "dist/echo.umd.js",
+  "module": "dist/echo.es.js",
+  "types": "dist/src/main.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "test": "vitest"
+  },
+  "devDependencies": {
+    "@types/node": "^24.1.0",
+    "@vitest/ui": "^3.2.4",
+    "jsdom": "^26.1.0",
+    "typescript": "~5.8.3",
+    "vite": "^7.0.4",
+    "vite-plugin-dts": "^4.5.4",
+    "vitest": "^3.2.4"
+  }
+}
