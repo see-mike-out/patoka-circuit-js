@@ -26,10 +26,15 @@ jobs:
         run: npm run build 
 
       - name: List files in dist directory
-        run: ls -l dist/
+        run: |
+          ls -l dist/
+          test -f dist/echo-circuit.es.js
+          test -f dist/echo-circuit.umd.js
+          test -f dist/echo-circuit.css
+        
       - name: List files in current directory
         run: ls -l .
-        
+
       - name: Create release 0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Automatically provided GitHub token
