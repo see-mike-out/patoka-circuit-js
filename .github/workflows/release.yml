@@ -16,13 +16,13 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-        
+
       - name: Install dependencies
-        run: | 
-          cd .. 
-          npm install 
+      working-directory: ./
+        run: npm install 
 
       - name: Build
+        working-directory: ./
         run: npm run build 
 
       - name: Create release
