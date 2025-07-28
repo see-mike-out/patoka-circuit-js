@@ -37,16 +37,21 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: List files in dist directory
-        run: ls -l
+        run: |
+          ls -l
+          ls -l dist
+          ls -l public
+          ls -l index.html
+          ls -l index_module.html
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
           name: github-pages
           path: |
-            './dist' 
-            './public'
-            './index.html'
-            './index_module.html'
+            'dist' 
+            'public'
+            'index.html'
+            'index_module.html'
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
