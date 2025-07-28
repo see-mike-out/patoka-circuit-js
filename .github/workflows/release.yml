@@ -14,6 +14,9 @@ jobs:
     runs-on: ubuntu-latest # Or another suitable runner
 
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
       - name: Install dependencies
         run: | 
           cd .. 
