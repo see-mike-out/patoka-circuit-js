@@ -235,7 +235,6 @@ export function planDrawing(data: CircuitDrawingData, match_data: MatchDataNorme
         layer,
         layer_index: starting_index + i,
         tooltip_content: {
-          priority: 2,
           "Layer": i,
           "# Operations": layer.operations.length,
           "Qubits": ""

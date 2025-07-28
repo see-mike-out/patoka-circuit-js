@@ -1,5 +1,5 @@
 export type InteractionEnterFunction = (
-  event: Event, role: string | undefined, content: string, clicked: boolean, priority: any
+  event: Event, role: string | undefined, content: string, clicked: boolean
 ) => void;
 export type InteractionMoveFunction = (
   event: Event, role: string | undefined

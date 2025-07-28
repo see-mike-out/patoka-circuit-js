@@ -1,7 +1,6 @@
 // @ts-nocheck
-
-// import { clearTooltip, makeTooltip, moveTooltip, prepareData } from "../src";
-// import { runEcho } from "../src";
+import { clearTooltip, makeTooltip, moveTooltip, prepareData } from "../src";
+import { runEcho } from "../src";
 
 let selector0 = '#circuit-0',
   selector1 = '#circuit-1',
@@ -15,17 +14,17 @@ let circuitSelectorName = {
 let interaction = {
   onMouseOver: (event, role, content, clicked) => {
     if (role === 'gate-group-click-wrap') {
-      echo.makeTooltip(event, content, 'vis-wrap-00001');
+      makeTooltip(event, content, 'vis-wrap-00001');
     }
   },
   onMouseMove: (event, role) => {
     if (role === 'gate-group-click-wrap') {
-      echo.moveTooltip(event, 'vis-wrap-00001');
+      moveTooltip(event, 'vis-wrap-00001');
     }
   },
   onMouseOut: (event, role) => {
     if (role == 'gate-group-click-wrap') {
-      echo.clearTooltip('vis-wrap-00001');
+      clearTooltip('vis-wrap-00001');
     }
   },
 }
@@ -339,11 +338,11 @@ let spec2 = {
 
 function draw() {
   // @ts-ignore
-  let prep0 = echo.prepareData(spec0);
+  let prep0 = prepareData(spec0);
   // @ts-ignore
-  let prep1 = echo.prepareData(spec1);
+  let prep1 = prepareData(spec1);
   // @ts-ignore
-  let prep2 = echo.prepareData(spec2);
+  let prep2 = prepareData(spec2);
 
   let circuit_set = {
     [selector0]: prep0,
@@ -351,9 +350,9 @@ function draw() {
     [selector2]: prep2,
   };
 
-  let outcome0 = echo.runEcho(prep0, circuit_set);
-  let outcome1 = echo.runEcho(prep1, circuit_set);
-  let outcome2 = echo.runEcho(prep2, circuit_set);
+  let outcome0 = runEcho(prep0, circuit_set);
+  let outcome1 = runEcho(prep1, circuit_set);
+  let outcome2 = runEcho(prep2, circuit_set);
 }
 
 draw();

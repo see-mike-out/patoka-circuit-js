@@ -1,5 +1,5 @@
 export type CompileOptions = {
-  showMoments: boolean,
+  showMoments?: boolean,
   filterUnusedQubits?: boolean,
   pagination?: Pagination,
   isOriginal?: boolean,

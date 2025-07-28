@@ -69,7 +69,6 @@ function generateTooltipContent(tooltip_content: any): string {
     "<table>" +
     Object.keys(tooltip_content)
       .map((k) => {
-        if (k === "priority") return "";
         return `<tr><th>${k}:</th><td>${tooltip_content[k]}</td></tr>`;
       })
       .join(" ") +
@@ -105,7 +104,7 @@ export function gMouseOver(e: Event, role: string | undefined, data: SvgGroup | 
   }
   if (data?.data?.tooltip_content && onMouseOver) {
     let content = generateTooltipContent(data.data.tooltip_content);
-    onMouseOver(e, role, content, false, data.data.tooltip_content.priority);
+    onMouseOver(e, role, content, false);
   }
 }
 
@@ -145,7 +144,7 @@ export function gClick(e: Event, role: string | undefined, data: SvgGroup | SvgC
   e.preventDefault();
   if (data?.data?.tooltip_content && onClick) {
     let content = generateTooltipContent(data.data.tooltip_content);
-    onClick(e, role, content, true, data.data.tooltip_content.priority);
+    onClick(e, role, content, true);
   }
 }
 
@@ -153,7 +152,7 @@ export function gFocus(e: Event, role: string | undefined, data: SvgGroup | SvgC
   e.preventDefault();
   if (data?.data?.tooltip_content && onFocus) {
     let content = generateTooltipContent(data.data.tooltip_content);
-    onFocus(e, role, content, true, data.data.tooltip_content.priority);
+    onFocus(e, role, content, true);
   }
 }
 
