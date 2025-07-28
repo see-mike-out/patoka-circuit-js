@@ -358,16 +358,13 @@ function draw() {
 
   // add download buttons
   [selector0, selector1, selector2].forEach(selector => {
-    let loader = echo.getSVGimageLink(selector, unitId)
-    // .then((loader) => {
-    //   console.log(loader)
-    //   let png_button = document.querySelector(`#download-${selector.replace("#", "")}-png`);
-    //   let svg_button = document.querySelector(`#download-${selector.replace("#", "")}-svg`);
-    //   console.log(png_button, svg_button)
-    //   png_button.href = loader?.png;
-    //   svg_button.href = loader?.svg;
-    // });
-    console.log("..", loader)
+    echo.getSVGimageLink(selector, unitId)
+      .then((loader) => {
+        let png_button = document.querySelector(`#download-${selector.replace("#", "")}-png`);
+        let svg_button = document.querySelector(`#download-${selector.replace("#", "")}-svg`);
+        png_button.href = loader?.png;
+        svg_button.href = loader?.svg;
+      });
   })
 }
 
