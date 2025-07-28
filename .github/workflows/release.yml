@@ -1,25 +1,30 @@
-    name: Create release
+name: Create release
 
-    on:
-      push:
-        tags:
-          - 'v*' # Triggers on any tag starting with 'v'
+on:
+  push:
+    tags:
+      - 'v*' # Triggers on any tag starting with 'v'
 
-    permissions:
-      contents: write # Grants write permissions to create the release
+permissions:
+  contents: write # Grants write permissions to create the release
 
-    jobs:
-      release:
-        name: Release pushed tag
-        runs-on: ubuntu-latest # Or another suitable runner
+jobs:
+  release:
+    name: Release pushed tag
+    runs-on: ubuntu-latest # Or another suitable runner
 
-        steps:
-          - name: Create release
-            env:
-              GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Automatically provided GitHub token
-              TAG: ${{ github.ref_name }} # The name of the pushed tag
-            run: |
-              gh release create "$TAG" \
-                --repo="$GITHUB_REPOSITORY" \
-                --title="${TAG#v}" \
-                --generate-notes
+    steps:
+      - name: Install dependencies
+        run: npm install 
+
+      - name: Build
+        run: npm run build 
+
+      - name: Create release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Automatically provided GitHub token
+          TAG: ${{ github.ref_name }} # The name of the pushed tag
+        run: |
+          gh release upload --title="${TAG#v}-ES" dist/echo-circuit.es.js
+          gh release upload --title="${TAG#v}-UMD" dist/echo-circuit.umd.js
+          gh release upload --title="${TAG#v}-CSS" dist/echo-circuit.css
