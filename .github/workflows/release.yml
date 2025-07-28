@@ -37,20 +37,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Automatically provided GitHub token
           TAG: ${{ github.ref_name }} # The name of the pushed tag
         run: |
-          gh release upload $TAG dist/echo-circuit.es.js
-
-      - name: Create release 1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Automatically provided GitHub token
-          TAG: ${{ github.ref_name }} # The name of the pushed tag
-        run: |
-          gh release upload $TAG dist/echo-circuit.umd.js
-
-      - name: Create release 2
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Automatically provided GitHub token
-          TAG: ${{ github.ref_name }} # The name of the pushed tag
-        run: |
-          gh release upload $TAG dist/echo-circuit.css
+          gh release create $TAG
+          gh release upload $TAG dist/echo-circuit.es.js dist/echo-circuit.umd.js dist/echo-circuit.css
           
           
