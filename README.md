@@ -2,6 +2,8 @@
 
 Patoka's Circuit Visualization for Pure JavaScript
 
+[Demo](https://see-mike-out.github.io/patoka-circuit-js/)
+
 ## How to Use
 
 **Pipeline**: `prepare` --> `compile` --> `draw`
