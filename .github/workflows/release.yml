@@ -30,4 +30,4 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Automatically provided GitHub token
           TAG: ${{ github.ref_name }} # The name of the pushed tag
         run: |
-          gh release upload ${{github.event.release.tag_name}} dist/echo-circuit.es.js dist/echo-circuit.umd.js dist/echo-circuit.css
+          gh release upload ${{github.event.release.tag_name}} ./dist/echo-circuit.es.js ./dist/echo-circuit.umd.js ./dist/echo-circuit.css
