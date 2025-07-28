@@ -8,6 +8,9 @@
   "files": [
     "dist"
   ],
+  "publishConfig": {
+    "registry": "https://www.npmjs.com/package/echo-circuit"
+  },
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",

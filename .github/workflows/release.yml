@@ -1,0 +1,25 @@
+    name: Create release
+
+    on:
+      push:
+        tags:
+          - 'v*' # Triggers on any tag starting with 'v'
+
+    permissions:
+      contents: write # Grants write permissions to create the release
+
+    jobs:
+      release:
+        name: Release pushed tag
+        runs-on: ubuntu-latest # Or another suitable runner
+
+        steps:
+          - name: Create release
+            env:
+              GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Automatically provided GitHub token
+              TAG: ${{ github.ref_name }} # The name of the pushed tag
+            run: |
+              gh release create "$TAG" \
+                --repo="$GITHUB_REPOSITORY" \
+                --title="${TAG#v}" \
+                --generate-notes
