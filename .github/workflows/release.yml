@@ -12,17 +12,17 @@ jobs:
   release:
     name: Release pushed tag
     runs-on: ubuntu-latest # Or another suitable runner
-
+    defaults:
+      run:
+        working-directory: ./
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
       - name: Install dependencies
-        working-directory: .
         run: npm install 
 
       - name: Build
-        working-directory: .
         run: npm run build 
 
       - name: Create release
