@@ -3,8 +3,6 @@ name: Host demo
 on:
   push:
     branches: ['main']
-    tags:
-      - 'h*' # Triggers on any tag starting with 'h'
 
 
 permissions:
