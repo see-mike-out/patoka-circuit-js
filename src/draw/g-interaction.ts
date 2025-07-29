@@ -130,7 +130,8 @@ export function gMouseOut(e: Event, role: string | undefined, data: SvgGroup | S
         el.style.fill = "transparent";
         el.style.fillOpacity = "";
         if (data.data.browser_info.is_safari) {
-          (el.querySelector('.click-wrap') as SVGElement)?.style?.setProperty('outline', `2px solid ${data.data.match_color}`);
+          (el.querySelector('.click-wrap') as SVGElement)?.style?.setProperty('outline', ``);
+          el.style.outline = "";
         } else {
           el.style.outline = "";
         }
@@ -147,7 +148,8 @@ export function gMouseOut(e: Event, role: string | undefined, data: SvgGroup | S
       tel.forEach((el) => {
         if (el) {
           if (data.data.browser_info.is_safari) {
-            (el.querySelector('.click-wrap') as SVGElement)?.style?.setProperty('outline', `2px solid ${data.data.match_color}`);
+            (el.querySelector('.click-wrap') as SVGElement)?.style?.setProperty('outline', ``);
+            el.style.outline = "";
           } else {
             el.style.outline = "";
           }
