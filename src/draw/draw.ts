@@ -1,5 +1,5 @@
 import { compileSpec } from "../compile";
-import type { PreparedData } from "../dtypes";
+import type { BrowserInfo, PreparedData } from "../dtypes";
 import { svgNamespace } from "./constants";
 import { draw_svg_elem } from "./drawSvgElem";
 // @ts-ignore
@@ -13,6 +13,14 @@ export function runEcho(
 ) {
   let compiled = compileSpec(spec, data_to_match);
   let is_firefox = navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
+  let is_safari = navigator.userAgent.toLowerCase().indexOf('safari') > -1 && navigator.userAgent.toLowerCase().indexOf('chrome') == -1;
+  let is_chrome = navigator.userAgent.toLowerCase().indexOf('chrome') > -1;
+  let browser_info: BrowserInfo = {
+    is_firefox,
+    is_safari,
+    is_chrome
+  }
+
 
   let draw_plan = compiled.draw_plan;
   let interaction = compiled.interaction;
@@ -40,7 +48,7 @@ export function runEcho(
     for (let group_key in draw_plan.groups) {
       const group = draw_plan.groups[group_key];
       if (group) {
-        let items = draw_svg_elem(group, is_firefox, interaction)
+        let items = draw_svg_elem(group, browser_info, interaction)
         if (items instanceof Array) {
           svg.append(...items);
         } else if (items) {

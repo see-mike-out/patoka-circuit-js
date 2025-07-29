@@ -1,7 +1,8 @@
+import type { BrowserInfo } from "../dtypes";
 import type { SvgDoubleLine } from "../dtypes/internal";
 import { svgNamespace } from "./constants";
 
-export function drawDoubleLine(item: SvgDoubleLine, _?: boolean): SVGElement[] {
+export function drawDoubleLine(item: SvgDoubleLine, _?: BrowserInfo): SVGElement[] {
   let gap = item["stroke-width"] !== undefined ? item["stroke-width"] : 1;
   let markers: Array<[string, number]> = [['--top', -gap / 2], ['--bottom', gap / 2]];
   let items: SVGElement[] = [];

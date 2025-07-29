@@ -14,3 +14,9 @@ export type Pagination = {
   range: [number, number],
   totalPage: number,
 }
+
+export type BrowserInfo = {
+  is_safari: boolean,
+  is_firefox: boolean,
+  is_chrome: boolean
+}

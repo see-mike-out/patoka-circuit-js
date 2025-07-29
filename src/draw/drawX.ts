@@ -1,7 +1,8 @@
+import type { BrowserInfo } from "../dtypes";
 import type { SvgX } from "../dtypes/internal";
 import { svgNamespace } from "./constants";
 
-export function drawX(item: SvgX, _?: boolean): SVGElement[] {
+export function drawX(item: SvgX, _?: BrowserInfo): SVGElement[] {
   let markers: Array<[string, [number, number], [number, number], string]> = [
     ['--0', [item.cx, item.cx + item.width], [item.cy, item.cy + item.height], `translate(-${item.width / 2}, -${item.height / 2})`],
     ['--1', [item.cx + item.width, item.cx], [item.cy, item.cy + item.height], `translate(-${item.width / 2}, -${item.height / 2})`]

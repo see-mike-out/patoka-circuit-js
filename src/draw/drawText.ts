@@ -1,7 +1,8 @@
+import type { BrowserInfo } from "../dtypes";
 import type { SvgText } from "../dtypes/internal";
 import { svgNamespace } from "./constants";
 
-export function drawText(item: SvgText, is_firefox: boolean): SVGElement {
+export function drawText(item: SvgText, browser_info: BrowserInfo): SVGElement {
   let elem = document.createElementNS(svgNamespace, "text");
 
   // meta
@@ -45,9 +46,9 @@ export function drawText(item: SvgText, is_firefox: boolean): SVGElement {
   if (item['alignment-baseline']) {
     elem.setAttribute("alignment-baseline", item['alignment-baseline']);
   }
-  if (item['alignment-baseline'] === "middle" && is_firefox) {
+  if (item['alignment-baseline'] === "middle" && browser_info.is_firefox) {
     elem.setAttribute("y", (item.y + font_size / 2).toString());
-  } else if (item['alignment-baseline'] === "baseline" && is_firefox) {
+  } else if (item['alignment-baseline'] === "baseline" && browser_info.is_firefox) {
     elem.setAttribute("y", (item.y + font_size).toString());
   }
 

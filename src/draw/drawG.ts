@@ -1,10 +1,10 @@
-import type { InteractionSpec } from "../dtypes";
+import type { BrowserInfo, InteractionSpec } from "../dtypes";
 import type { SvgGroup } from "../dtypes/internal";
 import { svgNamespace } from "./constants";
 import { draw_svg_elem } from "./drawSvgElem";
 import { gBlur, gClick, gFocus, gMouseMove, gMouseOut, gMouseOver } from "./g-interaction";
 
-export function drawG(item: SvgGroup, is_firefox: boolean, interaction?: InteractionSpec): SVGElement {
+export function drawG(item: SvgGroup, browser_info: BrowserInfo, interaction?: InteractionSpec): SVGElement {
   let elem = document.createElementNS(svgNamespace, "g");
   if (item.id) {
     elem.setAttribute("id", item.id);
@@ -24,7 +24,7 @@ export function drawG(item: SvgGroup, is_firefox: boolean, interaction?: Interac
   elem.setAttribute("height", item.height.toString());
 
   for (const child of item.elem) {
-    let child_elem = draw_svg_elem(child, is_firefox, interaction)
+    let child_elem = draw_svg_elem(child, browser_info, interaction)
     if (child_elem instanceof Array) {
       elem.append(...child_elem);
     } else if (child_elem) elem.appendChild(child_elem);

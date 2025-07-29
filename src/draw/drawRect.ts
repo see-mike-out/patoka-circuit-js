@@ -1,7 +1,8 @@
+import type { BrowserInfo } from "../dtypes";
 import type { SvgRect } from "../dtypes/internal";
 import { svgNamespace } from "./constants";
 
-export function drawRect(item: SvgRect, _?: boolean): SVGElement {
+export function drawRect(item: SvgRect, _?: BrowserInfo): SVGElement {
   let elem = document.createElementNS(svgNamespace, "rect");
   
   // meta

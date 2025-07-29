@@ -83,7 +83,11 @@ export function gMouseOver(e: Event, role: string | undefined, data: SvgGroup | 
       if (el) {
         el.style.fill = data.data.match_color;
         el.style.fillOpacity = "0.2";
-        el.style.outline = `2px solid  ${data.data.match_color}`;
+        if (data.data.browser_info.is_safari) {
+          (el.querySelector('.click-wrap') as SVGElement)?.style?.setProperty('outline', `2px solid ${data.data.match_color}`);
+        } else {
+          el.style.outline = `2px solid ${data.data.match_color}`;
+        }
       }
     });
   } else if (data.role === "gate-group") {
@@ -98,7 +102,13 @@ export function gMouseOver(e: Event, role: string | undefined, data: SvgGroup | 
     }
     if (tel) {
       tel.forEach((el) => {
-        if (el) el.style.outline = `2px solid  ${data.data.match_color}`;
+        if (el) {
+          if (data.data.browser_info.is_safari) {
+            (el.querySelector('.click-wrap') as SVGElement)?.style?.setProperty('outline', `2px solid ${data.data.match_color}`);
+          } else {
+            el.style.outline = `2px solid ${data.data.match_color}`;
+          }
+        }
       });
     }
   }
@@ -119,7 +129,11 @@ export function gMouseOut(e: Event, role: string | undefined, data: SvgGroup | S
       if (el) {
         el.style.fill = "transparent";
         el.style.fillOpacity = "";
-        el.style.outline = "";
+        if (data.data.browser_info.is_safari) {
+          (el.querySelector('.click-wrap') as SVGElement)?.style?.setProperty('outline', `2px solid ${data.data.match_color}`);
+        } else {
+          el.style.outline = "";
+        }
       }
     });
   } else if (data.role === "gate-group") {
@@ -131,7 +145,13 @@ export function gMouseOut(e: Event, role: string | undefined, data: SvgGroup | S
     }
     if (tel) {
       tel.forEach((el) => {
-        if (el) el.style.outline = "";
+        if (el) {
+          if (data.data.browser_info.is_safari) {
+            (el.querySelector('.click-wrap') as SVGElement)?.style?.setProperty('outline', `2px solid ${data.data.match_color}`);
+          } else {
+            el.style.outline = "";
+          }
+        }
       });
     }
   }

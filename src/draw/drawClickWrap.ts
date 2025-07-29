@@ -1,9 +1,9 @@
-import type { InteractionSpec } from "../dtypes";
+import type { BrowserInfo, InteractionSpec } from "../dtypes";
 import type { SvgClickWrap } from "../dtypes/internal";
 import { svgNamespace } from "./constants";
 import { gBlur, gClick, gFocus, gMouseMove, gMouseOut, gMouseOver } from "./g-interaction";
 
-export function drawClickWrap(item: SvgClickWrap, _?: boolean, interaction?: InteractionSpec): SVGElement {
+export function drawClickWrap(item: SvgClickWrap, _?: BrowserInfo, interaction?: InteractionSpec): SVGElement {
   let elem = document.createElementNS(svgNamespace, "rect");
 
   // meta
@@ -11,7 +11,9 @@ export function drawClickWrap(item: SvgClickWrap, _?: boolean, interaction?: Int
     elem.setAttribute("id", item.id);
   }
   if (item._class) {
-    elem.setAttribute("class", item._class);
+    elem.setAttribute("class", item._class + " click-wrap");
+  } else {
+    elem.setAttribute("class", "click-wrap");
   }
   if (item.role) {
     elem.setAttribute("data-role", item.role);

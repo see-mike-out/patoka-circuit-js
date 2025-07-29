@@ -1,7 +1,8 @@
+import type { BrowserInfo } from "../dtypes";
 import type { SvgCircle } from "../dtypes/internal";
 import { svgNamespace } from "./constants";
 
-export function drawCircle(item: SvgCircle, _?: boolean): SVGElement {
+export function drawCircle(item: SvgCircle, _?: BrowserInfo): SVGElement {
   let elem = document.createElementNS(svgNamespace, "circle");
   
   // meta

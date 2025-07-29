@@ -1,7 +1,8 @@
+import type { BrowserInfo } from "../dtypes";
 import type { SvgLine } from "../dtypes/internal";
 import { svgNamespace } from "./constants";
 
-export function drawLine(item: SvgLine, _?: boolean): SVGElement {
+export function drawLine(item: SvgLine, _?: BrowserInfo): SVGElement {
   let elem = document.createElementNS(svgNamespace, "line");
   
   // meta

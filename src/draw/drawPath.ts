@@ -1,7 +1,8 @@
+import type { BrowserInfo } from "../dtypes";
 import type { SvgPath } from "../dtypes/internal";
 import { svgNamespace } from "./constants";
 
-export function drawPath(item: SvgPath, _?: boolean): SVGElement {
+export function drawPath(item: SvgPath, _?: BrowserInfo): SVGElement {
   let elem = document.createElementNS(svgNamespace, "path");
 
   // meta
